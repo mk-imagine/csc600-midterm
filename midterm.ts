@@ -43,7 +43,7 @@ https://docs.google.com/document/d/1LXaPZJr0pebAmMjJGBgxO26yIjc-DJOSE1W-YmwWx7k/
 ** ============================================================================ */
 
 export const HONOR_PLEDGE = "I pledge on my honor that this assignment is my own work.";
-export const SIGNATURE = "<your-full-name-here>"; // TODO: FILL ME IN
+export const SIGNATURE = "Mark Kim"; // TODO: FILL ME IN
 
 // If you used resources, please list them here
 export const RESOURCES_CONSULTED = [
@@ -280,7 +280,11 @@ Example:
 ** ----------------------------------------------------- */
 
 export function renameSlice(slice: Slice, newName: string): Slice {
-    throw Error("TODO");
+    return {
+        tag: "SLICE",
+        name: newName,
+        toppings: slice.toppings
+    }
 }
 
 /* ----------------------------------------------------- **
@@ -325,7 +329,11 @@ Example:
 ** ----------------------------------------------------- */
 
 export function addToppingsToSlice(slice: Slice, toppings: Toppings[]): Slice {
-    throw Error("TODO");
+    return {
+        tag: "SLICE",
+        name: slice.name,
+        toppings: slice.toppings.concat(toppings)
+    }
 }
 
 
@@ -354,7 +362,13 @@ Example:
 ** ----------------------------------------------------- */
 
 export function removeToppingFromSlice(slice: Slice, topping: Toppings): Slice {
-    throw Error("TODO");
+    const updated_toppings = slice.toppings.filter(x => topping != x);
+    return {
+        tag: "SLICE",
+        name: slice.name,
+        toppings: updated_toppings
+    }
+
 }
 
 /* ==========================================================================  **
@@ -391,7 +405,13 @@ Example:
 ** ----------------------------------------------------- */
 
 export function weightOfTopping(topping: Toppings): number {
-    throw Error("TODO");
+    switch (topping) {
+        case "CHEESE": return 4;
+        case "CHICKEN": return 6;
+        case "MUSHROOMS": return 2;
+        case "PEPPERONI": return 1;
+        case "SAUCE": return 3;
+    };
 }
 
 
@@ -412,7 +432,8 @@ Example:
 ** ----------------------------------------------------- */
 
 export function weightOfToppingsInSlice(slice: Slice): number {
-    throw Error("TODO");
+    const weights = slice.toppings.map(weightOfTopping);
+    return weights.reduce((acc,x) => acc + x);
 }
 
 
@@ -469,7 +490,29 @@ Example:
 ** ----------------------------------------------------- */
 
 export function removeSliceFromHalve(halve: Halve, name: string): Pizza {
-    throw Error("TODO");
+    if (halve.halve1.tag === "HALVE" && halve.halve2.tag === "HALVE") {
+        return halve;
+    } else if (halve.halve1.tag === "HALVE" && halve.halve2.tag === "SLICE") {
+        if (halve.halve2.name === name) {
+            return halve.halve1;
+        } else {
+            return halve;
+        }
+    } else if (halve.halve1.tag === "SLICE" && halve.halve2.tag === "HALVE") {
+        if (halve.halve1.name === name) {
+            return halve.halve2;
+        } else {
+            return halve;
+        }
+    } else if (halve.halve1.tag === "SLICE" && halve.halve2.tag === "SLICE") {
+        if (halve.halve1.name === name) {
+            return halve.halve2;
+        } else if (halve.halve2.name === name) {
+            return halve.halve1;
+        }
+    } else {
+        return halve;
+    }
 }
 
 /* ==========================================================================  **
