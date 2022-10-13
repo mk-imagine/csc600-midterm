@@ -151,7 +151,7 @@ Example: pizza1
  |                                               |
  |                                               |
  |                                               |
- |       ["MUSHROOOM", "CHEESE"]                 |
+ |       ["MUSHROOM", "CHEESE"]                 |
  |                                               |
  |                                               |
  |                                               |
@@ -193,7 +193,7 @@ Example: pizza2
  | Dan                                           |
  |                                               |
  |                                               |
- |           ["MUSHROOOM", "CHEESE"]             |
+ |           ["MUSHROOM", "CHEESE"]             |
  |                                               |
  |                                               |
  |-----------------------------------------------|
@@ -490,19 +490,13 @@ Example:
 ** ----------------------------------------------------- */
 
 export function removeSliceFromHalve(halve: Halve, name: string): Pizza {
-    if (halve.halve1.tag === "HALVE" && halve.halve2.tag === "HALVE") {
-        return halve;
-    } else if (halve.halve1.tag === "HALVE" && halve.halve2.tag === "SLICE") {
+    if (halve.halve1.tag === "HALVE" && halve.halve2.tag === "SLICE") {
         if (halve.halve2.name === name) {
             return halve.halve1;
-        } else {
-            return halve;
         }
     } else if (halve.halve1.tag === "SLICE" && halve.halve2.tag === "HALVE") {
         if (halve.halve1.name === name) {
             return halve.halve2;
-        } else {
-            return halve;
         }
     } else if (halve.halve1.tag === "SLICE" && halve.halve2.tag === "SLICE") {
         if (halve.halve1.name === name) {
@@ -510,10 +504,11 @@ export function removeSliceFromHalve(halve: Halve, name: string): Pizza {
         } else if (halve.halve2.name === name) {
             return halve.halve1;
         }
-    } else {
-        return halve;
     }
+    return halve;
+
 }
+
 
 /* ==========================================================================  **
 ## Problem 3: Complex functions on Pizzas (45 pts)
@@ -586,7 +581,10 @@ Example:
 ** ----------------------------------------------------- */
 
 export function addToppingsToPizza(pizza: Pizza, toppings: Toppings[]): Pizza {
-    throw Error("TODO");
+    if (pizza.tag === "SLICE") {
+        return addToppingsToSlice(pizza, toppings);
+    }
+    return newHalve(addToppingsToPizza(pizza.halve1, toppings), addToppingsToPizza(pizza.halve2, toppings));
 }
 
 /* ----------------------------------------------------- **
