@@ -617,7 +617,11 @@ Example:
 ** ----------------------------------------------------- */
 
 export function weightOfToppingsInPizza(pizza: Pizza): number {
-    throw Error("TODO");
+    if (pizza.tag === "SLICE") {
+        return weightOfToppingsInSlice(pizza);
+    }
+    const result = [weightOfToppingsInPizza(pizza.halve1) * 0.5, weightOfToppingsInPizza(pizza.halve2) * 0.5]
+    return result.reduce((acc, x) => acc + x)
 }
 
 /* ==========================================================================  **
@@ -675,6 +679,27 @@ Example:
 
 ** ============================================================================ */
 
+
 export function tradeSlices(name1: string, name2: string, pizza: Pizza): Pizza {
-    throw Error("TODO");
+    if (pizza.tag === "SLICE") {
+        if (pizza.name === name1) {
+            return renameSlice(pizza, name2);
+        }
+        if (pizza.name === name2) {
+            return renameSlice(pizza, name1);
+        }
+        return pizza;
+    }
+    return newHalve(tradeSlices(name1, name2, pizza.halve1), tradeSlices(name1, name2, pizza.halve2));
 }
+
+function findNames(pizza: Pizza): Set<string> {
+    if (pizza.tag === "SLICE") {
+        return new Set([pizza.name]);
+    }
+    return new Set([...findNames(pizza.halve1), ...findNames(pizza.halve2)])
+}
+
+const piz = tradeSlices("Dan", "Jane", pizza4);
+console.log("\n\n");
+console.log(JSON.stringify(piz));

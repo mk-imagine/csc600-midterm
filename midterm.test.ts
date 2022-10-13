@@ -177,75 +177,75 @@ import * as mt from "./midterm";
 
 
 // addToppingsToPizza
-describe('3a. addToppingsToPizza', () => {
+// describe('3a. addToppingsToPizza', () => {
 
-    test('addToppingsToPizza(pizza1, ["CHEESE"])', () => {
-        expect(mt.addToppingsToPizza(mt.pizza1, ["CHEESE"])).toEqual(
-            {
-                tag: 'SLICE',
-                name: 'Dan',
-                toppings: [ 'MUSHROOMS', 'CHEESE', 'CHEESE' ]
-            }
-        );
-    });
+//     test('addToppingsToPizza(pizza1, ["CHEESE"])', () => {
+//         expect(mt.addToppingsToPizza(mt.pizza1, ["CHEESE"])).toEqual(
+//             {
+//                 tag: 'SLICE',
+//                 name: 'Dan',
+//                 toppings: [ 'MUSHROOMS', 'CHEESE', 'CHEESE' ]
+//             }
+//         );
+//     });
   
-    test('addToppingsToPizza(pizza2, ["CHEESE", "CHEESE"])', () => {
-        expect(mt.addToppingsToPizza(mt.pizza2, ["CHEESE", "CHEESE"])).toEqual(
-            {
-                tag: 'SLICE',
-                name: 'Jane',
-                toppings: [ 'SAUCE', 'CHICKEN', 'CHICKEN', 'CHEESE', 'CHEESE' ]
-            }
-        );
-    });
+//     test('addToppingsToPizza(pizza2, ["CHEESE", "CHEESE"])', () => {
+//         expect(mt.addToppingsToPizza(mt.pizza2, ["CHEESE", "CHEESE"])).toEqual(
+//             {
+//                 tag: 'SLICE',
+//                 name: 'Jane',
+//                 toppings: [ 'SAUCE', 'CHICKEN', 'CHICKEN', 'CHEESE', 'CHEESE' ]
+//             }
+//         );
+//     });
   
-    test('addToppingsToPizza(pizza3, ["SAUCE"])', () => {
-        expect(mt.addToppingsToPizza(mt.pizza3, ["SAUCE"])).toEqual(
-            {
-                tag: 'HALVE',
-                halve1: {
-                    tag: 'SLICE',
-                    name: 'Dan',
-                    toppings: [ 'MUSHROOMS', 'CHEESE', 'SAUCE' ]
-                },
-                halve2: {
-                    tag: 'SLICE',
-                    name: 'Bob',
-                    toppings: [ 'CHICKEN', 'CHEESE', 'SAUCE' ]
-                }
-            }
-        );
-    });
+//     test('addToppingsToPizza(pizza3, ["SAUCE"])', () => {
+//         expect(mt.addToppingsToPizza(mt.pizza3, ["SAUCE"])).toEqual(
+//             {
+//                 tag: 'HALVE',
+//                 halve1: {
+//                     tag: 'SLICE',
+//                     name: 'Dan',
+//                     toppings: [ 'MUSHROOMS', 'CHEESE', 'SAUCE' ]
+//                 },
+//                 halve2: {
+//                     tag: 'SLICE',
+//                     name: 'Bob',
+//                     toppings: [ 'CHICKEN', 'CHEESE', 'SAUCE' ]
+//                 }
+//             }
+//         );
+//     });
   
-    test('addToppingsToPizza(pizza4, ["SAUCE"])', () => {
-        expect(mt.addToppingsToPizza(mt.pizza4, ["SAUCE"])).toEqual(
-            {
-                tag: 'HALVE',
-                halve1: {
-                    tag: 'HALVE',
-                    halve1: {
-                    tag: 'SLICE',
-                    name: 'Dan',
-                    toppings: [ 'MUSHROOMS', 'CHEESE', 'SAUCE' ]
-                    },
-                    halve2: {
-                    tag: 'SLICE',
-                    name: 'Bob',
-                    toppings: [ 'CHICKEN', 'CHEESE', 'SAUCE' ]
-                    }
-                },
-                halve2: {
-                    tag: 'SLICE',
-                    name: 'Jane',
-                    toppings: [ 'SAUCE', 'CHICKEN', 'CHICKEN', 'SAUCE' ]
-                }
-            }
-        );
-    });
+//     test('addToppingsToPizza(pizza4, ["SAUCE"])', () => {
+//         expect(mt.addToppingsToPizza(mt.pizza4, ["SAUCE"])).toEqual(
+//             {
+//                 tag: 'HALVE',
+//                 halve1: {
+//                     tag: 'HALVE',
+//                     halve1: {
+//                     tag: 'SLICE',
+//                     name: 'Dan',
+//                     toppings: [ 'MUSHROOMS', 'CHEESE', 'SAUCE' ]
+//                     },
+//                     halve2: {
+//                     tag: 'SLICE',
+//                     name: 'Bob',
+//                     toppings: [ 'CHICKEN', 'CHEESE', 'SAUCE' ]
+//                     }
+//                 },
+//                 halve2: {
+//                     tag: 'SLICE',
+//                     name: 'Jane',
+//                     toppings: [ 'SAUCE', 'CHICKEN', 'CHICKEN', 'SAUCE' ]
+//                 }
+//             }
+//         );
+//     });
 
-});
+// });
 
-// // weightOfToppingsInPizza
+// weightOfToppingsInPizza
 // describe('3b. weightOfToppingsInPizza', () => {
 
 //     test('weightOfToppingsInPizza(pizza1)', () => {
@@ -267,56 +267,56 @@ describe('3a. addToppingsToPizza', () => {
 // });
 
 // // Bonus
-// describe('Bonus', () => {
+describe('Bonus', () => {
 
-//     test('tradeSlices("Dan", "Jane", pizza4)', () => {
-//         expect(mt.tradeSlices("Dan", "Jane", mt.pizza4)).toEqual(
-//             {
-//                 tag: 'HALVE',
-//                 halve1: {
-//                     tag: 'HALVE',
-//                     halve1: { tag: 'SLICE', name: 'Jane', toppings: [Array] },
-//                     halve2: { tag: 'SLICE', name: 'Bob', toppings: [Array] }
-//                 },
-//                 halve2: { tag: 'SLICE', name: 'Dan', toppings: [ 'MUSHROOMS', 'CHEESE' ] }
-//             }
-//         );
-//     });
+    test('tradeSlices("Dan", "Jane", pizza4)', () => {
+        expect(mt.tradeSlices("Dan", "Jane", mt.pizza4)).toEqual(
+            {
+                tag: 'HALVE',
+                halve1: {
+                    tag: 'HALVE',
+                    halve1: { tag: 'SLICE', name: 'Jane', toppings: ["MUSHROOMS", "CHEESE"] },
+                    halve2: { tag: 'SLICE', name: 'Bob', toppings: ["CHICKEN", "CHEESE"] }
+                },
+                halve2: { tag: 'SLICE', name: 'Dan', toppings: ["SAUCE", "CHICKEN", "CHICKEN"] }
+            }
+        );
+    });
   
-//     test('tradeSlices("Dan", "Bob", pizza4)', () => {
-//         expect(mt.tradeSlices("Dan", "Bob", mt.pizza4)).toEqual(
-//             {
-//                 tag: 'HALVE',
-//                 halve1: {
-//                     tag: 'HALVE',
-//                     halve1: { tag: 'SLICE', name: 'Bob', toppings: [Array] },
-//                     halve2: { tag: 'SLICE', name: 'Dan', toppings: [Array] }
-//                 },
-//                 halve2: {
-//                     tag: 'SLICE',
-//                     name: 'Jane',
-//                     toppings: [ 'SAUCE', 'CHICKEN', 'CHICKEN' ]
-//                 }
-//             }
-//         );
-//     });
+    // test('tradeSlices("Dan", "Bob", pizza4)', () => {
+    //     expect(mt.tradeSlices("Dan", "Bob", mt.pizza4)).toEqual(
+    //         {
+    //             tag: 'HALVE',
+    //             halve1: {
+    //                 tag: 'HALVE',
+    //                 halve1: { tag: 'SLICE', name: 'Bob', toppings: ["MUSHROOMS", "CHEESE"] },
+    //                 halve2: { tag: 'SLICE', name: 'Dan', toppings: ["CHICKEN", "CHEESE"] }
+    //             },
+    //             halve2: {
+    //                 tag: 'SLICE',
+    //                 name: 'Jane',
+    //                 toppings: [ 'SAUCE', 'CHICKEN', 'CHICKEN' ]
+    //             }
+    //         }
+    //     );
+    // });
   
-//     test('tradeSlices("Jill", "Dan", pizza4)', () => {
-//         expect(mt.addToppingsToPizza(mt.pizza3, ["SAUCE"])).toEqual(
-//             {
-//                 tag: 'HALVE',
-//                 halve1: {
-//                     tag: 'HALVE',
-//                     halve1: { tag: 'SLICE', name: 'Dan', toppings: [Array] },
-//                     halve2: { tag: 'SLICE', name: 'Bob', toppings: [Array] }
-//                 },
-//                 halve2: {
-//                     tag: 'SLICE',
-//                     name: 'Jane',
-//                     toppings: [ 'SAUCE', 'CHICKEN', 'CHICKEN' ]
-//                 }
-//             }
-//         );
-//     });
+    // test('tradeSlices("Jill", "Dan", pizza4)', () => {
+    //     expect(mt.tradeSlices("Jill", "Dan", mt.pizza4)).toEqual(
+    //         {
+    //             tag: 'HALVE',
+    //             halve1: {
+    //                 tag: 'HALVE',
+    //                 halve1: { tag: 'SLICE', name: 'Dan', toppings: ["MUSHROOMS", "CHEESE"] },
+    //                 halve2: { tag: 'SLICE', name: 'Bob', toppings: ["CHICKEN", "CHEESE"] }
+    //             },
+    //             halve2: {
+    //                 tag: 'SLICE',
+    //                 name: 'Jane',
+    //                 toppings: [ 'SAUCE', 'CHICKEN', 'CHICKEN' ]
+    //             }
+    //         }
+    //     );
+    // });
 
-// });
+});
