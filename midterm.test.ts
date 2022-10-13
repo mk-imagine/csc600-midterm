@@ -3,7 +3,7 @@ import * as mt from "./midterm";
 // renameSlice
 describe('1a. renameSlice', () => {
 
-    test('1', () => {
+    test('renameSlice(mt.pizza1, "Daniel")', () => {
       expect(mt.renameSlice(mt.pizza1, "Daniel")).toEqual({
         tag: 'SLICE',
         name: 'Daniel',
@@ -11,7 +11,7 @@ describe('1a. renameSlice', () => {
       });
     });
   
-    test('2', () => {
+    test('renameSlice(mt.pizza1, "Danny")', () => {
         expect(mt.renameSlice(mt.pizza1, "Danny")).toEqual({
             tag: 'SLICE',
             name: 'Danny',
@@ -24,7 +24,7 @@ describe('1a. renameSlice', () => {
 // addToppingsToSlice
 describe('1b. addToppingsToSlice', () => {
 
-    test('1', () => {
+    test('addToppingsToSlice(mt.pizza1, [])', () => {
       expect(mt.addToppingsToSlice(mt.pizza1, [])).toEqual({
         tag: 'SLICE',
         name: 'Dan',
@@ -32,7 +32,7 @@ describe('1b. addToppingsToSlice', () => {
       });
     });
   
-    test('2', () => {
+    test('addToppingsToSlice(mt.pizza1, ["CHICKEN"])', () => {
         expect(mt.addToppingsToSlice(mt.pizza1, ["CHICKEN"])).toEqual({
             tag: 'SLICE',
             name: 'Dan',
@@ -40,7 +40,7 @@ describe('1b. addToppingsToSlice', () => {
         });
     });
   
-    test('3', () => {
+    test('addToppingsToSlice(mt.pizza1, ["CHICKEN", "CHEESE"])', () => {
         expect(mt.addToppingsToSlice(mt.pizza1, ["CHICKEN", "CHEESE"])).toEqual({
             tag: 'SLICE',
             name: 'Dan',
@@ -48,7 +48,7 @@ describe('1b. addToppingsToSlice', () => {
         });
     });
   
-    test('4', () => {
+    test('addToppingsToSlice(mt.pizza2, ["CHICKEN", "CHEESE", "SAUCE"])', () => {
         expect(mt.addToppingsToSlice(mt.pizza2, ["CHICKEN", "CHEESE", "SAUCE"])).toEqual({
             tag: 'SLICE',
             name: 'Jane',
