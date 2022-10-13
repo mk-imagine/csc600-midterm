@@ -681,25 +681,33 @@ Example:
 
 
 export function tradeSlices(name1: string, name2: string, pizza: Pizza): Pizza {
-    if (pizza.tag === "SLICE") {
-        if (pizza.name === name1) {
-            return renameSlice(pizza, name2);
+
+    function getAllSlices(pizza: Pizza): Slice[] {
+        switch (pizza.tag) {
+            case "SLICE": return [pizza] as Slice[];
+            default:
+                return [...getAllSlices(pizza.halve1), ...getAllSlices(pizza.halve2)]
         }
-        if (pizza.name === name2) {
-            return renameSlice(pizza, name1);
+    }
+
+    function swapSlices(slice1: Slice, slice2: Slice, pizza: Pizza): Pizza {
+        if (pizza.tag === "SLICE") {
+            if (pizza.name === slice1.name) {
+                return slice2;
+            }
+            if (pizza.name === slice2.name) {
+                return slice1;
+            }
+            return pizza;
         }
+        return newHalve(swapSlices(slice1, slice2, pizza.halve1), swapSlices(slice1, slice2, pizza.halve2));
+    }
+
+    const slices = getAllSlices(pizza);
+    const slice1 = slices.filter(x => x.name === name1);
+    const slice2 = slices.filter(x => x.name === name2);
+    if (slice1.length === 0 || slice2.length === 0) {
         return pizza;
     }
-    return newHalve(tradeSlices(name1, name2, pizza.halve1), tradeSlices(name1, name2, pizza.halve2));
+    return swapSlices(slice1[0],slice2[0], pizza);
 }
-
-function findNames(pizza: Pizza): Set<string> {
-    if (pizza.tag === "SLICE") {
-        return new Set([pizza.name]);
-    }
-    return new Set([...findNames(pizza.halve1), ...findNames(pizza.halve2)])
-}
-
-const piz = tradeSlices("Dan", "Jane", pizza4);
-console.log("\n\n");
-console.log(JSON.stringify(piz));
